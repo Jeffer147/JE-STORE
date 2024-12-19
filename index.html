@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compra productos electrónicos y accesorios de calidad en JE Store SV.">
+    <meta name="keywords" content="electrónicos, accesorios, tienda online, JE Store SV">
+    <meta name="author" content="JE Store SV">
+    <title>JE Store SV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product img {
+            max-width: 150px;
+            margin-right: 20px;
+        }
+
+        .product h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .product p {
+            margin: 0;
+        }
+
+        .product .price {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .payment-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .payment-section h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+        }
+
+        .payment-section form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-section label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .payment-section input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .payment-section button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .payment-section button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const productsContainer = document.getElementById("products-container");
+
+            // Datos de ejemplo para productos
+            const products = [
+                {
+                    "image": "example-product.jpg",
+                    "name": "Audífonos Bluetooth",
+                    "description": "Calidad de sonido premium con cancelación de ruido.",
+                    "price": "$50.00"
+                },
+                {
+                    "image": "example-product.jpg",
+                    "name": "Cargador Rápido USB-C",
+                    "description": "Carga rápida y segura para tus dispositivos.",
+                    "price": "$25.00"
+                }
+            ];
+
+            // Renderizar productos dinámicamente
+            if (productsContainer) {
+                products.forEach(product => {
+                    const productElement = document.createElement("div");
+                    productElement.className = "product";
+                    productElement.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='placeholder.jpg'">
+                        <div>
+                            <h2>${product.name}</h2>
+                            <p>${product.description}</p>
+                            <p class="price">${product.price}</p>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productElement);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>JE Store SV</h1>
+        <p>Productos electrónicos y accesorios de calidad</p>
+    </header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Catálogo</a>
+        <a href="#payment">Pago en Línea</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+    <div class="container">
+        <h2>Productos Destacados</h2>
+        <div id="products-container">
+            <!-- Productos cargados dinámicamente -->
+        </div>
+
+        <div id="payment" class="payment-section">
+            <h2>Pago en Línea</h2>
+            <form action="#" method="POST">
+                <label for="name">Nombre Completo:</label>
+                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre completo" required>
+
+                <label for="card">Número de Tarjeta:</label>
+                <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" required pattern="\d{4}-\d{4}-\d{4}-\d{4}">
+
+                <label for="expiry">Fecha de Expiración:</label>
+                <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required pattern="(0[1-9]|1[0-2])\/\d{2}">
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="XXX" required pattern="\d{3}">
+
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>JE Store SV &copy; 2024. Todos los derechos reservados.</p>
+        <div id="contact" class="contact-info">
+            <p>Contáctanos en WhatsApp: <a href="https://wa.me/1234567890" style="color: #007bff; text-decoration: none;">+503 1234-5678</a></p>
+        </div>
+    </footer>
+</body>
+</html>
